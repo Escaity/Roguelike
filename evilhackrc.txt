@@ -1,4 +1,4 @@
-# Last modified: 202/06/05
+# Last modified: 2020/06/05
 # This is an example nethackrc file for EvilHack - You should edit
 # this file to meet your play style needs.
 
