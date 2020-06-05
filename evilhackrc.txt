@@ -1,7 +1,7 @@
 # Last modified: 2020/06/05
 
 # Tournament setting
-# junethack Escaity
+# junethack USERNAME
 
 # basic options
 OPTIONS=windowtype:tty
