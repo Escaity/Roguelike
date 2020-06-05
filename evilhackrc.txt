@@ -1,0 +1,83 @@
+# Last modified: 202/06/05
+# This is an example nethackrc file for EvilHack - You should edit
+# this file to meet your play style needs.
+
+# Available editors: rnano or virus via the terminal, or see our web-based RC Editor
+# at https://www.hardfought.org/nethack/rcedit
+
+# Examples of common defaults:
+
+OPTIONS=windowtype:tty
+OPTIONS=showexp,showscore,time,color,!autopickup
+OPTIONS=autodig,fruit:slime mold,boulder:0
+OPTIONS=perm_invent
+# objects in inventory can display their weight (uncomment to enable)
+#OPTIONS=invweight
+
+# statushitlites is a popular option for 3.6.x based variants - some common settings:
+
+OPTIONS=statushilites
+OPTIONS=hilite_status: hitpoints-max/green&normal
+OPTIONS=hilite_status: hitpoints/100%/green&normal
+OPTIONS=hilite_status: hitpoints/<100%/lightgreen&normal
+OPTIONS=hilite_status: hitpoints/<76%/yellow&normal
+OPTIONS=hilite_status: hitpoints/<51%/orange&normal
+OPTIONS=hilite_status: hitpoints/<26%/red&normal
+OPTIONS=hilite_status: hitpoints/<11%/black&normal
+
+# Curses UI is available on this build. Example settings (uncomment OPTIONS=windowtype:curses to enable)
+# All Curses UI settings are commented out
+
+##################
+# Curses Settings
+##################
+# default values in parentheses
+
+# Enable curses windowport (false)
+#OPTIONS=windowtype:curses  
+
+# Enable two or three statuslines at the bottom (80x25 terminal size for statuslines:3)
+#OPTIONS=statuslines:2
+
+# Window borders (3)
+# 1 - always draw borders
+# 2 - never draw borders
+# 3 - draw borders if terminal is big enough
+#OPTIONS=windowborders:3
+
+# Set terminal window for same dimensions
+# Adjust these variables to your liking
+#OPTIONS=term_cols:120
+#OPTIONS=term_rows:32
+
+# Attributes for pet highlighting (???)
+# [i]talics (or is it inverse?)
+# [u]nderline
+# [b]old
+# possibly others
+#OPTIONS=petattr:u
+
+# use colour in non-map areas (true)
+#OPTIONS=guicolor
+
+# Display inventory window permanently on right of screen (false)
+#OPTIONS=perm_invent
+
+# Window alignment (msg:top, status:bottom)
+# note: align_status:left/right displays a more verbose window, arranged vertically
+# this is only partially implemented in 3.6.1 and is buggy
+# it will be fixed soon
+#OPTIONS=align_message:top
+#OPTIONS=align_status:bottom
+
+# Settings not specific to curses that you will want to use.
+#OPTIONS=hitpointbar
+#OPTIONS=menucolors
+
+# End of Curses settings
+##################
+
+# For more information on what you can set in your nethackrc file, refer to:
+# https://nethackwiki.com/wiki/Options
+# Happy hacking!
+
