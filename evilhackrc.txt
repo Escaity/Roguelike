@@ -140,10 +140,8 @@ OPTIONS=perm_invent
 
 # Window alignment (msg:top, status:bottom)
 # note: align_status:left/right displays a more verbose window, arranged vertically
-# this is only partially implemented in 3.6.1 and is buggy
-# it will be fixed soon
-#OPTIONS=align_message:top
-#OPTIONS=align_status:bottom
+OPTIONS=align_message:bottom
+OPTIONS=align_status:top
 
 # Settings not specific to curses that you will want to use.
 OPTIONS=hitpointbar
