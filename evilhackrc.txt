@@ -5,7 +5,7 @@
 
 # basic options
 OPTIONS=windowtype:tty
-OPTIONS=showexp,showscore,time,color
+OPTIONS=showexp,showscore,showrace,time,color
 OPTIONS=autodig,fruit:slime mold,boulder:0
 OPTIONS=autopickup, pickup_types:$?!="
 OPTIONS=pickup_thrown
@@ -108,10 +108,11 @@ OPTIONS=hilite_status: hitpoints/<11%/black&normal
 ##################
 # Curses Settings
 ##################
-# default values in parentheses
+# Enable curses windowport
+OPTIONS=windowtype:curses  
 
-# Enable curses windowport (false)
-#OPTIONS=windowtype:curses  
+# Display inventory window permanently on right of screen (false)
+OPTIONS=perm_invent
 
 # Enable two or three statuslines at the bottom (80x25 terminal size for statuslines:3)
 #OPTIONS=statuslines:2
@@ -136,9 +137,6 @@ OPTIONS=hilite_status: hitpoints/<11%/black&normal
 
 # use colour in non-map areas (true)
 #OPTIONS=guicolor
-
-# Display inventory window permanently on right of screen (false)
-OPTIONS=perm_invent
 
 # Window alignment (msg:top, status:bottom)
 # note: align_status:left/right displays a more verbose window, arranged vertically
@@ -338,8 +336,6 @@ MENUCOLOR="\{g\}"=lightgreen
 MENUCOLOR="\{b\}"=lightblue
 MENUCOLOR="\{[mp]\}"=lightmagenta
 MENUCOLOR="\{c\}"=lightcyan
-
-###########################################################################
 
 # End of Curses settings
 ##################
