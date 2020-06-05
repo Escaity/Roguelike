@@ -1,21 +1,98 @@
 # Last modified: 2020/06/05
-# This is an example nethackrc file for EvilHack - You should edit
-# this file to meet your play style needs.
 
-# Available editors: rnano or virus via the terminal, or see our web-based RC Editor
-# at https://www.hardfought.org/nethack/rcedit
+# Tournament setting
+# junethack Escaity
 
-# Examples of common defaults:
-
+# basic options
 OPTIONS=windowtype:tty
-OPTIONS=showexp,showscore,time,color,!autopickup
+OPTIONS=showexp,showscore,time,color
 OPTIONS=autodig,fruit:slime mold,boulder:0
-OPTIONS=perm_invent
+OPTIONS=autopickup, pickup_types:$?!="
+OPTIONS=pickup_thrown
+OPTIONS=pickup_burden:S
+OPTIONS=paranoid_confirmation:attack pray Remove
+OPTIONS=msg_window:reverse,msghistory:1000
+
+# emergencies
+MSGTYPE=stop "The (couatl.*eel|kraken) swings itself around you!"
+MSGTYPE=stop "The python grabs you!"
+MSGTYPE=stop "You don't feel very well"
+MSGTYPE=stop "You are turning a little green"
+MSGTYPE=stop "Your limbs are getting oozy"
+MSGTYPE=stop "Your skin begins to peel away"
+MSGTYPE=stop "You are turning into a green slime"
+MSGTYPE=stop "You are slowing down"
+MSGTYPE=stop "Your limbs are stiffening"
+MSGTYPE=stop "It constricts your throat!"
+MSGTYPE=stop "You find it hard to breathe"
+MSGTYPE=stop "You're gasping for air"
+MSGTYPE=stop "Your blood is having trouble reaching your brain"
+MSGTYPE=stop "You can no longer breathe"
+MSGTYPE=stop "You're turning blue"
+MSGTYPE=stop "Your consciousness is fading"
+MSGTYPE=stop "You feel deathly sick"
+MSGTYPE=stop "You feel much worse"
+MSGTYPE=stop "You feel even worse"
+
+# vibrating square
+MSGTYPE=stop "You feel a strange vibration beneath "
+MSGTYPE=stop "You feel a strange vibration under your "
+
+# #enhance
+MSGTYPE=stop "You feel more confident "
+
+# status effects
+MSGTYPE=stop "You feel hungry"
+MSGTYPE=stop "You are beginning to feel hungry"
+MSGTYPE=stop "You are getting the munchies"
+MSGTYPE=stop "You feel weak now"
+MSGTYPE=stop "You still have the munchies"
+MSGTYPE=stop "You feel weak"
+MSGTYPE=stop "You are beginning to feel weak"
+MSGTYPE=stop "The munchies are interfering with your motor capabilities"
+MSGTYPE=stop " needs food, badly!"
+MSGTYPE=stop "You only feel hungry now"
+MSGTYPE=stop "You now have a lesser case of the munchies"
+MSGTYPE=stop "You faint from lack of food"
+MSGTYPE=stop "You regain consciousness"
+MSGTYPE=stop "You die from starvation"
+MSGTYPE=stop "You die from hunger and exhaustion"
+MSGTYPE=stop "You feel deathly sick"
+MSGTYPE=stop "You feel even worse"
+MSGTYPE=stop "You feel much worse"
+MSGTYPE=stop "You die from your illness"
+
+#  (potential) inventory cursing
+MSGTYPE=stop "You feel a malignant aura surround the magic-absorbing blade"
+MSGTYPE=stop "You feel a malignant aura surround you"
+
+#  near-death
+MSGTYPE=stop "You hear the howling of the CwnAnnwn..."
+MSGTYPE=stop ", your life force is running out."
+MSGTYPE=stop ", all your powers will be lost..."
+MSGTYPE=stop "You hear the wailing of the Banshee..."
+MSGTYPE=stop " is about to die."
+
+# noise
+MSGTYPE=hide "^With great effort you move the boulder"
+MSGTYPE=hide "^Your armor is rather cumbersome..."
+MSGTYPE=hide "^You displaced "
+
+# Always pick these:
+AUTOPICKUP_EXCEPTION="<magic lamp"
+AUTOPICKUP_EXCEPTION="<wand of wishing"
+AUTOPICKUP_EXCEPTION="<wand of death"
+AUTOPICKUP_EXCEPTION="<wand of polymorph"
+
+# Don't pick these:
+AUTOPICKUP_EXCEPTION=">worthless piece of"
+AUTOPICKUP_EXCEPTION=">load stone"
+AUTOPICKUP_EXCEPTION=">flint stone"
+
 # objects in inventory can display their weight (uncomment to enable)
 #OPTIONS=invweight
 
-# statushitlites is a popular option for 3.6.x based variants - some common settings:
-
+# Status hilites
 OPTIONS=statushilites
 OPTIONS=hilite_status: hitpoints-max/green&normal
 OPTIONS=hilite_status: hitpoints/100%/green&normal
@@ -61,7 +138,7 @@ OPTIONS=hilite_status: hitpoints/<11%/black&normal
 #OPTIONS=guicolor
 
 # Display inventory window permanently on right of screen (false)
-#OPTIONS=perm_invent
+OPTIONS=perm_invent
 
 # Window alignment (msg:top, status:bottom)
 # note: align_status:left/right displays a more verbose window, arranged vertically
@@ -71,8 +148,198 @@ OPTIONS=hilite_status: hitpoints/<11%/black&normal
 #OPTIONS=align_status:bottom
 
 # Settings not specific to curses that you will want to use.
-#OPTIONS=hitpointbar
-#OPTIONS=menucolors
+OPTIONS=hitpointbar
+OPTIONS=menucolors
+
+#########
+# B/U/C #
+#########
+#MENUCOLOR="^[a-zA-Z$] - "=white
+MENUCOLOR=" !C"=white
+MENUCOLOR=" !B"=white
+MENUCOLOR=" !UC"=white
+MENUCOLOR=" uncursed| UC?($| )"=white
+MENUCOLOR=" [+-][0-9]"=white
+
+MENUCOLOR=" blessed| B($| )"=cyan
+MENUCOLOR=" cursed| C($| )"=red
+
+################
+# WATER SPORTS #
+################
+MENUCOLOR=" holy water"=cyan
+MENUCOLOR=" blessed clear potion"=cyan
+MENUCOLOR=" blessed potions? called water"=cyan
+MENUCOLOR=" clear potions? named (holy|blessed|B)($| )"=cyan
+MENUCOLOR=" potions? of water named (holy|blessed|B)($| )"=cyan
+MENUCOLOR=" potions? called water named (holy|blessed|B)($| )"=cyan
+MENUCOLOR=" unholy water"=orange
+MENUCOLOR=" cursed clear potion"=orange
+MENUCOLOR=" cursed potions? called water"=orange
+MENUCOLOR=" potions? called water named (unholy|cursed|C)($| )"=orange
+
+#################
+# FOOD CONDUCTS # thanks, teabing!
+#################
+# vegan
+MENUCOLOR="(food |cram |K-|C-)ration|gunyoki"=green
+MENUCOLOR="lembas wafer|melon|carrot|tins? .* spinach"=green
+MENUCOLOR=" oranges?( named.*)?$"=green
+MENUCOLOR=" pears?( named.*)?$"=green
+MENUCOLOR=" (apple|banana|kelp|eucalyptus|garlic|wolfsbane)"=green
+MENUCOLOR=" (slime mold|brain)"=green
+MENUCOLOR="(tins? of )?(gelatinous cube|acid blob|quivering blob)( corpse)?"=green
+MENUCOLOR="(tins? of )?(blue|spotted|ochre) jelly( corpse)?"=green
+MENUCOLOR="(tins? of )?lichen|shrieker|violet fungus|(brown|yellow|green|red) mold( corpse)?"=green
+
+# vegetarian
+MENUCOLOR="egg|pancake|fortune cookie|candy bar|royal jelly|cream pie|candle"=green
+MENUCOLOR="(tin of )?brown pudding|gray ooze( corpse)?"=green
+
+###########
+# GOODIES #
+###########
+MENUCOLOR=" bag .* holding"=magenta
+MENUCOLOR=" luck(stone)?($| )"=magenta
+MENUCOLOR=" wand .* wish(ing)?($| )"=magenta
+MENUCOLOR=" wand .* tele(port(ation)?)?($| )"=magenta
+MENUCOLOR=" wand .* polymorph"=magenta
+MENUCOLOR=" wand .* death"=magenta
+MENUCOLOR=" gain level"=magenta
+MENUCOLOR=" full healing"=magenta
+MENUCOLOR=" magic marker"=magenta
+MENUCOLOR=" magic lamp|lamp .* magic"=magenta
+MENUCOLOR=" unicorn horn[^[]*$"=magenta
+MENUCOLOR=" tinning kit"=magenta
+MENUCOLOR=" ring .* regen(eration)?($| )"=magenta
+MENUCOLOR=" ring .* conflict"=magenta
+MENUCOLOR=" ring .* (FA|free action)($| )"=magenta
+MENUCOLOR=" ring .* (TC|teleport control)($| )"=magenta
+MENUCOLOR=" ring .* lev(itation)?($| )"=magenta
+MENUCOLOR=" scrolls? .* genocide($| )"=magenta
+MENUCOLOR=" scrolls? .* charging($| )"=magenta
+MENUCOLOR=" scrolls? .* identify($| )"=magenta
+MENUCOLOR=" amulet .* (life ?saving|LS)($| )"=magenta
+MENUCOLOR=" amulet .* ref(lection)?($| )"=magenta
+MENUCOLOR=" c(o|hi)ckatrice (corpse|egg)"=magenta
+MENUCOLOR=" egg .* cockatrice"=magenta
+MENUCOLOR=" stethoscope"=magenta
+
+#instruments
+MENUCOLOR="tooled horn|fire horn|frost horn|horn .* (tooled|fire|frost)"=magenta
+MENUCOLOR=" harp"=magenta
+MENUCOLOR=" bugle"=magenta
+MENUCOLOR=" flute"=magenta
+
+# unidentified magic armor
+MENUCOLOR="piece of cloth|opera cloak|ornamental cope|tattered cape"=magenta
+MENUCOLOR="plumed helmet|etched helmet|crested helmet|visored helmet"=magenta
+MENUCOLOR="(old|padded|riding|fencing) gloves"=magenta
+MENUCOLOR="(mud|buckled|riding|snow|hiking|combat|jungle) boots"=magenta
+
+#############
+# ARTIFACTS #
+#############
+#unaligned
+MENUCOLOR=" (Dragonbane|Fire Brand|Frost Brand|Ogresmasher|Trollsbane|Werebane)"=lightgreen
+
+#lawful normal, quest
+MENUCOLOR=" (Demonbane|Excalibur|Grayswandir|Snickersnee|Sunsword)"=lightgreen
+MENUCOLOR=" (Orb of Detection|Sceptre of Might|Magic Mirror of Merlin|Mitre of Holiness|Tsurugi of Muramasa)"=lightgreen
+
+#neutral normal, quest
+MENUCOLOR=" (Cleaver|Giantslayer|Magicbane|Mjollnir|Vorpal Blade)"=lightgreen
+MENUCOLOR=" (Heart of Ahriman|Staff of Aesculapius|Eyes of the Overworld|Platinum Yendorian Express Card|Orb of Fate|Eye of the Aethiopica)"=lightgreen
+
+#chaotic normal, quest
+MENUCOLOR=" (Grimtooth|Orcrist|Sting|Stormbringer)"=lightgreen
+MENUCOLOR=" (Longbow of Diana|Master Key of Thievery)"=lightgreen
+
+#invocation items
+MENUCOLOR=" (Bell of Opening|silver bell|Candelabrum of Invocation|candelabrum|Book of the Dead|papyrus spellbook)"=magenta
+
+#raison d'etre
+MENUCOLOR=" Amulet of Yendor named"=magenta&underline
+
+##################
+# CURSED GOODIES #
+##################
+MENUCOLOR=" cursed.* bag .* holding"=red&bold
+MENUCOLOR=" cursed.* luck(stone)?($| )"=red
+MENUCOLOR=" cursed.* unicorn horn"=red
+MENUCOLOR=" cursed.* (Bell of Opening|silver bell|Candelabrum of Invocation|candelabrum|Book of the Dead|papyrus spellbook)"=red
+MENUCOLOR="cursed tins? .* spinach|tins? .* spinach .* (cursed|C($| ))"=red
+
+#############
+# BAD STUFF #
+#############
+MENUCOLOR=" load(stone)?($| )"=red&underline
+
+##############################
+# WATCH OUT, BAG OF HOLDING! #
+##############################
+MENUCOLOR=" bag .* tricks"=blue&underline
+MENUCOLOR=" wand .*[^!]canc"=blue&underline
+MENUCOLOR=" wand .* vanish"=blue&underline
+
+################
+# SHINY THINGS #
+################
+MENUCOLOR=" gold piece"=yellow
+MENUCOLOR=" valuable"=brown
+MENUCOLOR=" gems? .* hard"=yellow
+
+#soft gems
+MENUCOLOR=" ([0-9]+|an?|gems? .*) (uncursed |cursed |blessed )?(dilithium|opal|garnet|jasper|agate|jet|obsidian|jade|citrine|chrysoberyl|amber|amethyst|fluorite|turquoise)(e?s)?( stones?| gems?| crystals?)?( named .*)?$"=brown
+
+#hard gems
+MENUCOLOR=" ([0-9]+|an?|gems?.*) (uncursed |cursed |blessed )?(diamond|rub(y|ies)|jacinth|sapphire|black opal|emerald|topaz|aquamarine)(e?s)?(stones?| gems?)?( named .*)?$"=yellow
+
+#######################
+# SPELL FAILURE RATES #
+#######################
+MENUCOLOR=" 0%"=white
+MENUCOLOR=" [1-9]%"=cyan
+MENUCOLOR=" [12][0-9]%"=cyan
+MENUCOLOR=" [3-6][0-9]%"=yellow
+MENUCOLOR=" 7[0-5]%"=yellow
+MENUCOLOR=" 7[6-9]%"=orange
+MENUCOLOR=" 8[0-9]%"=orange
+MENUCOLOR=" 9[0-9]%"=red
+MENUCOLOR=" 100%"=red
+
+###################
+# FORGOTTEN SPELL # thanks, Stevie, rsarson
+###################
+MENUCOLOR="[a-zA-Z ]+ [0-9]\*   [a-z]+ +[0-9]+%"=magenta
+
+############
+# #ENHANCE # thanks itsblah
+############
+MENUCOLOR="^ *[a-z] - +[a-z -]+ +\[(Unskilled|Basic|Skilled|Expert|Master|Grand Master)\]$"=white
+MENUCOLOR="^ +\* +[a-z -]+ +\[(Unskilled|Basic|Skilled|Expert|Master|Grand Master)\]$"=white
+
+################
+# FORCE COLORS #
+################
+# Some of these are subject to change !
+
+MENUCOLOR="\{R\}"=red
+MENUCOLOR="\{B\}"=blue
+MENUCOLOR="\{C\}"=cyan
+MENUCOLOR="\{G\}"=green
+MENUCOLOR="\{Y\}"=yellow
+MENUCOLOR="\{[MP]\}"=magenta
+MENUCOLOR="\{O\}"=orange
+MENUCOLOR="\{W\}"=white
+MENUCOLOR="\{L\}"=black
+MENUCOLOR="\{y\}"=gray
+MENUCOLOR="\{g\}"=lightgreen
+MENUCOLOR="\{b\}"=lightblue
+MENUCOLOR="\{[mp]\}"=lightmagenta
+MENUCOLOR="\{c\}"=lightcyan
+
+###########################################################################
 
 # End of Curses settings
 ##################
