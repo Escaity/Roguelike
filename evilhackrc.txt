@@ -4,7 +4,6 @@
 # junethack USERNAME
 
 # basic options
-OPTIONS=windowtype:tty
 OPTIONS=showexp,showscore,showrace,time,color
 OPTIONS=autodig,fruit:slime mold,boulder:0
 OPTIONS=autopickup, pickup_types:$?!="
@@ -308,12 +307,6 @@ MENUCOLOR=" 100%"=red
 # FORGOTTEN SPELL # thanks, Stevie, rsarson
 ###################
 MENUCOLOR="[a-zA-Z ]+ [0-9]\*   [a-z]+ +[0-9]+%"=magenta
-
-############
-# #ENHANCE # thanks itsblah
-############
-MENUCOLOR="^ *[a-z] - +[a-z -]+ +\[(Unskilled|Basic|Skilled|Expert|Master|Grand Master)\]$"=white
-MENUCOLOR="^ +\* +[a-z -]+ +\[(Unskilled|Basic|Skilled|Expert|Master|Grand Master)\]$"=white
 
 ################
 # FORCE COLORS #
